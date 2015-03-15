@@ -23,8 +23,7 @@ public class Lightscreen extends JFrame {
         // setUndecorated(true);
         // getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 
-        // The X doesn't exist any more, but I set the default close operation
-        // anyways...
+        // The X doesn't exist any more, but I set the default close operation anyways...
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Transparent JFrame Background
@@ -56,7 +55,5 @@ public class Lightscreen extends JFrame {
     private void addElements() {
         // Add the Frame's panel to the frame
         add(homePanel);
-
-
     }
 }
