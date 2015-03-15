@@ -8,9 +8,6 @@ public abstract class ISongPart {
         content = newContent;
     }
 
-    public String getText() {
-        return content.getRawText();
-    }
-
     public abstract int getSortOrder();
+    public abstract Class getType();
 }

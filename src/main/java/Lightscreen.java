@@ -1,3 +1,6 @@
+import Lyrics.Content;
+import Lyrics.Verse;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -39,6 +42,22 @@ public class Lightscreen extends JFrame {
         setVisible(true);
 
         System.out.println("Hello World");
+
+        System.out.println("Creating Content");
+        Content c1 = new Content("Content for verse one");
+        Verse v1 = new Verse(c1);
+
+        System.out.println("Creating Content");
+        Content c2 = new Content("Content for verse two");
+        Verse v2 = new Verse(c2);
+
+        System.out.println("Creating Song");
+        Song s = new Song();
+        s.addPart(v1);
+        s.addPart(v2);
+
+        System.out.println("Saving Song");
+        s.saveSongToJson("C:\\song1.txt");
     }
 
     /**

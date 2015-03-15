@@ -16,4 +16,9 @@ public class Verse extends ISongPart {
     public int getSortOrder() {
         return index;
     }
+
+    @Override
+    public Class getType() {
+        return null;
+    }
 }
