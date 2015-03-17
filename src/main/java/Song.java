@@ -1,42 +1,52 @@
-import Lyrics.ISongPart;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Dictionary;
+
+// TODO: Formatting
 
 public class Song {
-    ObjectWriter mapper = new ObjectMapper().writer().withDefaultPrettyPrinter();
-    ArrayList<ISongPart> songContent;
+    private ObjectWriter mapper = new ObjectMapper().writer().withDefaultPrettyPrinter();
+
+    // TODO: What kind of dictionary should I use?
+    //public Dictionary<Lyric, String> songContent;
+    public ArrayList<String> songOrder;
 
     public Song() {
-        songContent = new ArrayList<ISongPart>();
-    }
-
-    public Song(ArrayList<ISongPart> newContent) {
-        songContent = newContent;
+        //songContent = new Dictionary<Lyric, String>();
+        songOrder = new ArrayList<>();
     }
 
     public Song(String filePath) {
-        // TODO
+        // TODO:
     }
 
-    public void addPart(ISongPart part) {
-        songContent.add(part);
+    public void appendLyric(Lyric lyric) {
+        /*if (!songContent.containsKey(lyric.getID())) {
+            songContent.put(lyric, lyric.getID());
+        }*/
+        songOrder.add(lyric.getID());
     }
 
-    public void removePart(ISongPart part) {
-        songContent.add(part);
+    // TODO: prependLyric, insertLyricAtIndex
+
+    public void removeFirstLyric(Lyric part) {
+        // TODO:
     }
+
+    // TODO: removeLastLyric, removeLyricAtIndex
 
     public void readSongFromJson(String filePath) {
-        // TODO
+        // TODO:
     }
 
     public void saveSongToJson(String filePath) {
         try {
             // TODO: Move away from absolute path?  Or should I move this to C://Program Files, etc
-            mapper.writeValue(new File(filePath), songContent);
+            // I think the local running path would be best
+            mapper.writeValue(new File(filePath), this);
         } catch (IOException e) {
             e.printStackTrace();
         }
