@@ -75,4 +75,7 @@ public class Lightscreen extends JFrame {
         // Add the Frame's panel to the frame
         add(homePanel);
     }
+
+
+
 }
