@@ -4,7 +4,17 @@ apply plugin: 'application'
 mainClassName = "Lightscreen"
 sourceCompatibility = 1.7
 
-String os = project.hasProperty('os')?project.os.toLowerCase():System.properties['os.name'].toLowerCase()
+String os = System.properties['os.name'].toLowerCase()
+if (project.hasProperty('os')) {
+    os = project.os.toLowerCase()
+} else {
+    if (os.contains("windows"))
+        os = "windows"
+    if (os.contains("linux"))
+        os = "linux"
+    if (os.contains("osx"))
+        os = "osx"
+}
 
 version = '1.0.0'
 
