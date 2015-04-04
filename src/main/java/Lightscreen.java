@@ -13,6 +13,7 @@ public class Lightscreen extends JFrame {
      */
     public static void main(String[] args) {
         new Lightscreen();
+        new OpenGLTest();
     }
 
     private Lightscreen() {

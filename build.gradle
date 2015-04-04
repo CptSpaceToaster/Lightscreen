@@ -1,14 +1,12 @@
-plugins {
-    id 'com.stehno.natives' version '0.2.1'
-}
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "OpenGLTest"
-
+mainClassName = "Lightscreen"
 sourceCompatibility = 1.7
-version = '1.0.0'
 
+String os = project.hasProperty('os')?project.os.toLowerCase():System.properties['os.name'].toLowerCase()
+
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -18,8 +16,23 @@ dependencies {
     compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'
     compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
     compile group: 'org.lwjgl.lwjgl', name: 'lwjgl', version: '2.+'
-    //testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
+// Add a task to copy the native libraries to the $buildDir/natives/$os directory
+task ('installNatives', type: Copy) {
+    def artifacts = configurations.compile.resolvedConfiguration.resolvedArtifacts.findAll { it.classifier == "natives-$os" }
+    artifacts.each {
+        from zipTree(it.file)
+    }
+    into "$buildDir/natives/$os"
+}
+
+// Add the natives lib to the java.library.path for testing
+run {
+    systemProperty "java.library.path", "$buildDir/natives/$os"
+}
+
+run.dependsOn 'installNatives'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'

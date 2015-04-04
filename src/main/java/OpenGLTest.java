@@ -5,7 +5,7 @@ import org.lwjgl.opengl.DisplayMode;
 public class OpenGLTest {
     public OpenGLTest() {
         try {
-            Display.setDisplayMode(new DisplayMode(800, 600));
+            Display.setDisplayMode(new DisplayMode(1024, 768));
             Display.create();
 
             while(!Display.isCloseRequested()) {
@@ -16,9 +16,5 @@ public class OpenGLTest {
         } catch(LWJGLException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        new OpenGLTest();
     }
 }
