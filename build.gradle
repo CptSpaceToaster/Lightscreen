@@ -23,8 +23,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'
-    compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
     compile group: 'org.lwjgl.lwjgl', name: 'lwjgl', version: '2.+'
 }
 

@@ -1,21 +1,17 @@
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
-
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Dictionary;
+import java.util.TreeMap;
 
 // TODO: Formatting
 
 public class Song {
-    private ObjectWriter mapper = new ObjectMapper().writer().withDefaultPrettyPrinter();
-
     // TODO: What kind of dictionary should I use?
-    //public Dictionary<Lyric, String> songContent;
+    public TreeMap<String, String> songContent;
     public ArrayList<String> songOrder;
 
     public Song() {
-        //songContent = new Dictionary<Lyric, String>();
+        songContent = new TreeMap<String, String>();
         songOrder = new ArrayList<>();
     }
 
@@ -23,16 +19,22 @@ public class Song {
         // TODO:
     }
 
-    public void appendLyric(Lyric lyric) {
-        /*if (!songContent.containsKey(lyric.getID())) {
-            songContent.put(lyric, lyric.getID());
-        }*/
-        songOrder.add(lyric.getID());
+    public void setLyric(String lyric, String key) {
+        if (!songContent.containsKey(key)) {
+            songContent.put(key, lyric);
+        }
+    }
+    public void addLyric(String... keys) {
+        for (String key : keys) {
+            if (songContent.containsKey(key)) {
+                songOrder.add(key);
+            }
+        }
     }
 
     // TODO: prependLyric, insertLyricAtIndex
 
-    public void removeFirstLyric(Lyric part) {
+    public void removeFirstLyric(String part) {
         // TODO:
     }
 
@@ -43,11 +45,12 @@ public class Song {
     }
 
     public void saveSongToJson(String filePath) {
+        // I'm treating this like an API call... the GUI should hand me a valid absolute path.
         try {
-            // TODO: Move away from absolute path?  Or should I move this to C://Program Files, etc
-            // I think the local running path would be best
-            mapper.writeValue(new File(filePath), this);
-        } catch (IOException e) {
+            PrintWriter o = new PrintWriter(filePath);
+            o.println(Lightscreen.mapper.toJson(this));
+            o.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }

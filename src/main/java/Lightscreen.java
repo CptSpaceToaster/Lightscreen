@@ -1,9 +1,13 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Lightscreen extends JFrame {
     /* GUI Stuff */
     private JPanel homePanel;
+    protected static Gson mapper = new GsonBuilder().setPrettyPrinting().create();
 
     /**
      * Main method to be called externally. Creates an instance of
@@ -13,10 +17,11 @@ public class Lightscreen extends JFrame {
      */
     public static void main(String[] args) {
         new Lightscreen();
-        new OpenGLTest();
+//        new OpenGLTest();
     }
 
     private Lightscreen() {
+
         createElements();
         addElements();
 
@@ -39,24 +44,25 @@ public class Lightscreen extends JFrame {
         // We should probably display this thing
         setVisible(true);
 
-        System.out.println("Hello World");
-
-        System.out.println("Creating Lyric 1");
-        Lyric l1 = new Lyric("Words for first verse", "verse1");
-        System.out.println("Creating Lyric 2");
-        Lyric l2 = new Lyric("Words for second verse", "verse2");
-        System.out.println("Creating Lyric 3");
-        Lyric l3 = new Lyric("chorus", "chorus1");
-
         System.out.println("Creating Song");
         Song s = new Song();
-        s.appendLyric(l1);
-        s.appendLyric(l3);
-        s.appendLyric(l2);
-        s.appendLyric(l3);
+        s.setLyric("A duck walked up to a lemonade stand\n" + "and he said to the man running the stand\n" + "Hey. got any grapes?", "chorus1");
+        s.setLyric("When the duck walked up to the lemonade stand\n" + "And he said to the man that was running the stand\n" + "Hey.  You got any glue?", "chorus2");
+        s.setLyric("The man said no we just sell lemonade.  It’s cold and its fresh and it’s all home made.  Can I sell you glass? The duck said “I’ll pass”.\n"
+                + "Then he waddled away.  Till the very next day.", "verse1");
+        s.setLyric("The man said no, like I said yesterday, we just sell lemonade okay?\n" + "Why not give it a try?   The duck said Goodbye.\n"
+                + "Then he waddled away.  He waddled away.  He waddled away\n" + "Till the very next day.", "verse2");
+        s.setLyric(
+                "The man said look, this is getting old.  Lemonade’s all we’ve ever sold. Why not give it a go?   The duck said “No.”\n" + "Then he waddled away.  He waddled away.  He waddled away\n"
+                        + "Till the very next day.", "verse3");
+        s.setLyric("The man said THAT’S IT!!  If you don’t stay away,duck,  I’ll glue you to a tree and leave you there all day, stuck.\n" + "So don’t get to close!  The duck said Adios.\n"
+                + "Then he waddled away.  He waddled away.  He waddled away\n" + "Till the very next day.", "verse4");
+        s.setLyric("What?\n" + "You got any glue?\n" + "No, why would I– Oh!\n" + "Then one more question for you:\n" + "Got any grapes?", "refrain");
+
+        s.addLyric("verse1", "chorus1", "verse2", "chorus1", "verse3", "chorus1", "verse4", "chorus2", "refrain");
 
         System.out.println("Saving Song");
-        s.saveSongToJson("C:\\song1.txt");
+        s.saveSongToJson("song1.txt");
     }
 
     /**
