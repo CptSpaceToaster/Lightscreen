@@ -1,5 +1,3 @@
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -13,10 +11,6 @@ public class Song {
     public Song() {
         songContent = new TreeMap<String, String>();
         songOrder = new ArrayList<>();
-    }
-
-    public Song(String filePath) {
-        // TODO:
     }
 
     public void setLyric(String lyric, String key) {
@@ -42,16 +36,5 @@ public class Song {
 
     public void readSongFromJson(String filePath) {
         // TODO:
-    }
-
-    public void saveSongToJson(String filePath) {
-        // I'm treating this like an API call... the GUI should hand me a valid absolute path.
-        try {
-            PrintWriter o = new PrintWriter(filePath);
-            o.println(Lightscreen.mapper.toJson(this));
-            o.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 }

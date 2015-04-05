@@ -1,13 +1,9 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class Lightscreen extends JFrame {
     /* GUI Stuff */
     private JPanel homePanel;
-    protected static Gson mapper = new GsonBuilder().setPrettyPrinting().create();
 
     /**
      * Main method to be called externally. Creates an instance of
@@ -61,8 +57,17 @@ public class Lightscreen extends JFrame {
 
         s.addLyric("verse1", "chorus1", "verse2", "chorus1", "verse3", "chorus1", "verse4", "chorus2", "refrain");
 
-        System.out.println("Saving Song");
-        s.saveSongToJson("song1.txt");
+        System.out.println("Saving Song 1");
+        IO.save(s, "song1.txt");
+
+        System.out.println("Loading Song 1 into Song 2");
+        Song song2 = IO.load("song1.txt");
+
+        System.out.println("Adding verse1 to the end");
+        song2.addLyric("verse1");
+
+        System.out.println("Saving Song 2");
+        IO.save(song2, "song2.txt");
     }
 
     /**
