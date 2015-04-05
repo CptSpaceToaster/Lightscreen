@@ -1,0 +1,22 @@
+{
+  "songContent": {
+    "chorus1": "A duck walked up to a lemonade stand\nand he said to the man running the stand\nHey. got any grapes?",
+    "chorus2": "When the duck walked up to the lemonade stand\nAnd he said to the man that was running the stand\nHey.  You got any glue?",
+    "refrain": "What?\nYou got any glue?\nNo, why would I– Oh!\nThen one more question for you:\nGot any grapes?",
+    "verse1": "The man said no we just sell lemonade.  It’s cold and its fresh and it’s all home made.  Can I sell you glass? The duck said “I’ll pass”.\nThen he waddled away.  Till the very next day.",
+    "verse2": "The man said no, like I said yesterday, we just sell lemonade okay?\nWhy not give it a try?   The duck said Goodbye.\nThen he waddled away.  He waddled away.  He waddled away\nTill the very next day.",
+    "verse3": "The man said look, this is getting old.  Lemonade’s all we’ve ever sold. Why not give it a go?   The duck said “No.”\nThen he waddled away.  He waddled away.  He waddled away\nTill the very next day.",
+    "verse4": "The man said THAT’S IT!!  If you don’t stay away,duck,  I’ll glue you to a tree and leave you there all day, stuck.\nSo don’t get to close!  The duck said Adios.\nThen he waddled away.  He waddled away.  He waddled away\nTill the very next day."
+  },
+  "songOrder": [
+    "verse1",
+    "chorus1",
+    "verse2",
+    "chorus1",
+    "verse3",
+    "chorus1",
+    "verse4",
+    "chorus2",
+    "refrain"
+  ]
+}
